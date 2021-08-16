@@ -1,0 +1,316 @@
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>幸运大转盘</title>
+
+    </head>
+
+    <style> 
+
+        #background{
+            width: 100%;
+            height: 100%;
+            z-index: -30;
+            position: absolute;
+        }
+
+        #triangle{
+            width: 0;
+            height: 0;/**将宽和高设为0*/
+            position :absolute;
+            border-bottom: 250px solid saddlebrown;
+            border-left: 1px  solid transparent;
+            border-right: 1px solid transparent;/**border-top为0，border-left何border-right设为透明*/
+            margin-left: 349px;
+            margin-top: 20px;
+            z-index: 9;
+            transform-origin: 50% 100%;
+            transition-property: all;
+            transition-duration: 5s;
+            transition-timing-function: ease-in-out;
+        } 
+
+        #little-circle{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: saddlebrown;
+            z-index: 10;
+            position: absolute;
+            margin-top: 230px;
+            margin-left: 310px;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 10px;
+            text-align: center;
+        }
+
+        #big-circle{
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background-color: red;
+            z-index: -10;
+            position: absolute;
+            margin-top: 10px;
+            margin-left: 90px;
+        }
+
+        #circle{
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: burlywood; 
+            margin-top: 20px;
+            margin-left: 100px;
+        }
+
+        .left{
+            clip: rect(0px 250px 500px 0px);
+            position: absolute;
+            left: 0px;
+            width: 250px;
+            height: 500px;   
+        }
+
+        .right{
+            clip: rect(0px 250px 500px 0px);
+            position: absolute;
+            right: 0px;
+            width: 250px;
+            height: 500px;    
+        }
+
+        .left-circle{
+            width: 250px;
+            height: 500px;
+            border-radius: 250px 0px 0px 250px ;
+            left: 0px;
+            background-color: rgb(255, 80, 95);
+            transform-origin: 100% 50%;
+            position: absolute;
+        }
+
+        .right-circle{
+            width: 250px;
+            height: 500px;
+            border-radius: 0px 250px 250px 0px;
+            right: 0px;
+            background-color: hotpink;
+            transform-origin: 0% 50%;
+            position: absolute;
+        }
+
+        .center{
+            text-align: center;
+        }
+
+        #fan1{
+            background-color: lightblue;
+            transform: rotate(0deg);
+            font-size: 25px;
+            font-weight: 500;
+            letter-spacing: 20px;
+        }
+
+        #fan2{
+            background-color: lightgoldenrodyellow;
+            transform: rotate(-60deg);
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 12px;
+        }
+       
+        #fan3{
+            background-color: lightblue;
+            transform: rotate(-120deg);
+            font-size: 25px;
+            font-weight: 500;
+            letter-spacing: 10px;
+        }
+
+       
+
+        #fan4{
+            background: lightgoldenrodyellow;
+            transform: rotate(0deg);
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 12px;
+        }
+
+       
+
+        #fan5{
+            background-color: lightblue ;
+            transform: rotate(60deg);
+            font-size: 25px;
+            font-weight: 500;
+            letter-spacing: 30px;
+        }
+
+        #fan6{
+            background-color: lightgoldenrodyellow;
+            transform: rotate(120deg);
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 12px;
+        }
+
+        .rotate30{
+            transform: rotate(30deg);
+        }
+
+        .rotate-30{
+            transform: rotate(-30deg);   
+        }
+
+        .huaweiP50{
+            width: 60px;
+            height: 60px;
+            z-index: 100;
+            position: absolute;
+        }
+
+        .ticket-left{
+            width: 100px;
+            height: 50px;
+            z-index: 100;
+            position: absolute;
+        }
+
+        .ticket-right{
+            width: 100px;
+            height: 50px;
+            z-index: 100;
+            position: absolute;
+        }
+
+        .bracelet-left{
+            width: 70px;
+            height: 70px;
+            z-index: 100; 
+            position: absolute;
+        }
+
+        .bracelet-right{
+            width: 60px;
+            height: 60px;
+            z-index: 100;
+            position: absolute;
+        }
+
+        .projecter{
+            width: 90px;
+            height: 60px;
+            z-index: 100;
+            position: absolute;
+        }
+
+        #audio{
+            position: absolute;
+            left: 200;
+            bottom: 80;
+        }
+        #message{
+            position: absolute;
+            width: 800px;
+            height: 500px;
+            right: 0px;
+            top: 20px;
+            border: 10px;
+            border-color: bisque;
+            text-align: center;
+            font-size: 50px;
+            letter-spacing: 20px;
+            font-weight: 800;
+            color: burlywood;
+        }
+
+    </style>
+
+    <body>
+
+        <img id="background" src="背景图片.jpeg"></img>
+        <div id="triangle"></div>
+        <div id="little-circle"><br>&nbsp抽奖</div><!--使用换行辅助css调整位置-->
+        <div id="big-circle"></div>
+
+        <div id="circle">
+
+            <div class="left" >
+                <div class="left-circle" id="fan1">
+                    <p class="rotate-30 " style="text-align: right;"><br>华为P50</p>
+                    <img class="huaweiP50 rotate-30" src="华为P50.jpeg" alt="华为P50" hspace="168" >
+                </div> 
+
+                 <div class="left-circle" id="fan2">
+                    <p class="rotate-30 " style="text-align:right; "><br>100元代金券</p> 
+                   <img class="ticket-left rotate-30" src="100元代金券.jpeg" alt="100元代金券" hspace="140">
+                </div>
+
+               <div class="left-circle" id="fan3">
+                    <p class="rotate-30 "  style="text-align:right;"><br>小米运动手环</p> 
+                    <img class="bracelet-left rotate-30" src="小米运动手环.jpeg" alt="小米运动手环" hspace="160">
+                </div>
+
+             </div>
+
+             <div class="right">
+               <div class="right-circle" id="fan4">
+                    <p class="rotate30 " style="text-align:left;"><br>100元代金券</p>
+                    <img class="ticket-right rotate30" src="100元代金券.jpeg" alt="100元代金券" hspace="15" >
+                </div>
+  
+                <div class="right-circle" id="fan5">
+                    <p class="rotate30 "  style="text-align:left;"><br>&nbsp打印机 </p>
+                    <img class="projecter rotate30" src="打印机.jpeg" alt="打印机" hspace="15">
+                </div>
+
+                <div class="right-circle" id="fan6">
+                    <p class="rotate30 " style="text-align:left;"><br>100元代金券 </p>
+                    <img class="ticket-right rotate30" src="100元代金券.jpeg" alt="100元代金券"  hspace="15">
+                </div>
+
+            </div>
+
+         </div>
+
+         <div id="message">
+            <p id="恭喜" style="margin-top: 200px;"></p>
+            <p id="奖品" style="letter-spacing: 45px;"></p>
+        </div>
+
+         <audio id="audio" src="咱、比您贱 - 欢快.mp3" loop="-1" controls="controls" autoplay="autoplay"></audio> 
+
+         <script>  
+           var button=document.getElementById("little-circle");
+           var triangle=document.getElementById("triangle");
+           var sum=0;
+            button.onclick=function(){
+                var degree=Math.random()*23040;
+                sum+=degree;
+                console.log("本次旋转度数"+degree);
+                console.log("总旋转度数"+sum);
+                triangle.style.transform="rotate("+sum+"deg)";
+                var easeDegree=sum%360;
+                var section = parseInt(easeDegree/60);
+                console.log("easeDegree="+easeDegree);
+                console.log("section="+section);
+                console.log(document.getElementById("奖品").innerHTML);
+                document.getElementById("恭喜").innerHTML=" 恭喜你抽到了<br>";
+                switch(section){
+                    case 0: document.getElementById("奖品").innerHTML="100元商场代金券";break;
+                    case 1: document.getElementById("奖品").innerHTML="打印机";break;
+                    case 2: document.getElementById("奖品").innerHTML="100元商场代金券";break;
+                    case 3: document.getElementById("奖品").innerHTML="小米运动手环";break;
+                    case 4: document.getElementById("奖品").innerHTML="100元商场代金券";break;
+                    case 5: document.getElementById("奖品").innerHTML="华为P50";break;
+                }
+            }
+         </script>
+    </body>
+</html>
